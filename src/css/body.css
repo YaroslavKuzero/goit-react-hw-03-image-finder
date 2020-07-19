@@ -1,0 +1,29 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+#root {
+  padding: 10px;
+}
+
+button[value='good'] {
+  background: lightgreen;
+}
+button[value='neutral'] {
+  background: lightyellow;
+}
+button[value='bad'] {
+  background: lightpink;
+}
