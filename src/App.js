@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react';
 import './css/body.css';
 import './css/styles.css';
-import FetchFotoApp from './components/FetchFotoApp'
+import FetchPhotoApp from './components/FetchPhotoApp';
 
 function App() {
   return (
     <Fragment>
-      <FetchFotoApp />
+      <FetchPhotoApp />
     </Fragment>
   );
 }

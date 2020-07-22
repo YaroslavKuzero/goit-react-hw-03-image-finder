@@ -1,5 +1,6 @@
 import axios from 'axios'
 
+// Not work!
 // axios.defaults.headers.common['Authorization'] = `16958496-eed71f695e795e31d6c8ecae3`;
 
 const apiKey = '16958496-eed71f695e795e31d6c8ecae3';

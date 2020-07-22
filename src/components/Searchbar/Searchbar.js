@@ -1,9 +1,4 @@
 import React, { Component } from 'react';
-
-
-// Компонент принимает один проп `onSubmit` - функцию для передачи значения инпута
-// при сабмите формы. Создает DOM-элемент следующей структуры.
-
 class Searchbar extends Component {
   state = {
     query: '',

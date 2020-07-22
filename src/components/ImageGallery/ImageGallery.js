@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
+class ImageGallery extends Component {
 
+  handlerRenderModal = event => {
+    if (event.target !== event.currentTarget) {
+      this.props.onImageClick();
+    }
+  }
 
-const ImageGallery = () => (
-  <ul className="ImageGallery">
-    {/* <!-- Набор <li> с изображениями --> */}
-  </ul>
-)
-
+  render() {
+    return (
+      <ul className="ImageGallery" onClick={this.handlerRenderModal}>{this.props.children}</ul>
+    )
+  }
+}
 
 export default ImageGallery;

@@ -1,18 +1,36 @@
-// ## Описание компонента Modal
+import React, { Component } from 'react';
+import { createPortal } from 'react-dom'
 
-// При клике по элементу галереи должно открываться модальное окно с темным
-// оверлеем и отображаться большая версия изображения. Модальное окно должно
-// закрываться по нажатию клавиши `ESC` или по клику на оверлее.
+const modalRoot = document.querySelector('#modal-root');
+class Modal extends Component {
 
-// Внешний вид похож на функционал этого
-// [VanillaJS-плагина](https://basiclightbox.electerious.com/), только вместо
-// белого модального окна рендерится изображение (в примере нажми `Run`). Анимацию
-// делать не нужно!
+  componentDidMount() {
+    window.addEventListener('keydown', this.handlerEscape)
+  }
 
-// ```html
-// <div className="Overlay">
-//   <div className="Modal">
-//     <img src="" alt="" />
-//   </div>
-// </div>
-// ```
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this.handlerEscape)
+  }
+
+  handlerEscape = event => {
+    if (event.code === 'Escape') {
+      this.props.onClose();
+    }
+  }
+
+  handlerBackDrop = event => {
+    if (event.currentTarget === event.target) {
+      this.props.onClose();
+    }
+  }
+
+  render() {
+    return createPortal(<div onClick={this.handlerBackDrop} className="Overlay" >
+      <div className="Modal" >
+        <img src={this.props.largeImage} alt="" />
+      </div>
+    </div>, modalRoot)
+  }
+}
+
+export default Modal;
