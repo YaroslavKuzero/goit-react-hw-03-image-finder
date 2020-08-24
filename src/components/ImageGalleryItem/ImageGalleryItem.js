@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 class ImageGalleryItem extends Component {
   //onCardClick this is my props coming from main app = handlerModalContent
 
@@ -11,6 +13,11 @@ class ImageGalleryItem extends Component {
       </>
     )
   }
+}
+
+ImageGalleryItem.PropTypes = {
+  photos: PropTypes.array.isRequired,
+  omCardClick: PropTypes.func.isRequired,
 }
 
 export default ImageGalleryItem;
