@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 
 class ImageGallery extends Component {
 
+  static propTypes = {
+    onImageClick: PropTypes.func.isRequired,
+    children: PropTypes.node,
+  }
+
   handlerRenderModal = event => {
     if (event.target !== event.currentTarget) {
       this.props.onImageClick();
@@ -14,11 +19,6 @@ class ImageGallery extends Component {
       <ul className="ImageGallery" onClick={this.handlerRenderModal}>{this.props.children}</ul>
     )
   }
-}
-
-ImageGallery.PropTypes = {
-  onImageClick: PropTypes.func.isRequired,
-  children: PropTypes.node,
 }
 
 export default ImageGallery;

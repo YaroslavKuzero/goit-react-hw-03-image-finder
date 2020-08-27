@@ -4,6 +4,11 @@ import PropTypes from 'prop-types';
 class ImageGalleryItem extends Component {
   //onCardClick this is my props coming from main app = handlerModalContent
 
+  static propTypes = {
+    photos: PropTypes.array.isRequired,
+    onCardClick: PropTypes.func.isRequired,
+  }
+
   render() {
     const { photos } = this.props
     return (
@@ -13,11 +18,6 @@ class ImageGalleryItem extends Component {
       </>
     )
   }
-}
-
-ImageGalleryItem.PropTypes = {
-  photos: PropTypes.array.isRequired,
-  omCardClick: PropTypes.func.isRequired,
 }
 
 export default ImageGalleryItem;

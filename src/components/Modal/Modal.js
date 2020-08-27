@@ -6,6 +6,10 @@ const modalRoot = document.querySelector('#modal-root');
 
 class Modal extends Component {
 
+  static propTypes = {
+    onClose: PropTypes.func.isRequired,
+    largeImage: PropTypes.string.isRequired,
+  }
   componentDidMount() {
     window.addEventListener('keydown', this.handlerEscape)
   }
@@ -34,11 +38,5 @@ class Modal extends Component {
     </div>, modalRoot)
   }
 }
-
-Modal.PropTypes = {
-  onClose: PropTypes.func.isRequired,
-  largeImage: PropTypes.string.isRequired,
-}
-
 
 export default Modal;
