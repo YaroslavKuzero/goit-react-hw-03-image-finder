@@ -1,10 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import './css/body.css';
+import './css/styles.css';
+import FetchPhotoApp from './components/FetchPhotoApp';
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <FetchPhotoApp />
   </React.StrictMode>,
   document.getElementById('root'),
 );

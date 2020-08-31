@@ -11,11 +11,11 @@ class Searchbar extends Component {
     query: '',
   }
 
-  handleChange = event =>
-    this.setState({ query: event.currentTarget.value });
+  handleChange = e =>
+    this.setState({ query: e.currentTarget.value });
 
-  handleSubmit = event => {
-    event.preventDefault()
+  handleSubmit = e => {
+    e.preventDefault()
     this.props.onSubmit(this.state.query)
     this.setState({ query: '' })
   }

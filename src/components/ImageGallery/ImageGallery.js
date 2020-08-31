@@ -8,8 +8,8 @@ class ImageGallery extends Component {
     children: PropTypes.node,
   }
 
-  handlerRenderModal = event => {
-    if (event.target !== event.currentTarget) {
+  handlerRenderModal = e => {
+    if (e.target !== e.currentTarget) {
       this.props.onImageClick();
     }
   }

@@ -4,7 +4,11 @@ import PropTypes from 'prop-types';
 
 export default function Button({ handler }) {
   return (
-    <button className='Button' type='button' onClick={handler}>Load more</button>
+    <button
+      className='Button'
+      type='button'
+      onClick={handler}
+    >Load more</button>
   );
 }
 

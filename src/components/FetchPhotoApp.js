@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
+
 import Searchbar from './Searchbar';
 import Loader from './Loader';
-import photoApi from './photoApi';
 import Error from './Error';
 import Button from './Button';
 import ImageGallery from './ImageGallery';
 import Modal from './Modal';
 import ImageGalleryItem from './ImageGalleryItem';
 
+import photoApi from './photoApi';
 
 class FetchPhotoApp extends Component {
   state = {
@@ -30,7 +31,7 @@ class FetchPhotoApp extends Component {
     }
   }
 
-  renderModal = () => {
+  handleRenderModal = () => {
     this.setState(({ renderModal }) => ({
       renderModal: !renderModal
     }))
@@ -73,14 +74,14 @@ class FetchPhotoApp extends Component {
 
 
   render() {
-    const { photos, isLoading, error, renderModal } = this.state
+    const { photos, isLoading, error, renderModal, modalContent } = this.state
 
     return (
       <div className='App'>
-        {renderModal && <Modal largeImage={this.state.modalContent} onClose={this.renderModal} />}
+        {renderModal && <Modal largeImage={modalContent} onClose={this.handleRenderModal} />}
         <Searchbar onSubmit={this.onChangeQuery} />
         {error && <Error />}
-        <ImageGallery onImageClick={this.renderModal}><ImageGalleryItem photos={this.state.photos} onCardClick={this.handlerModalContent} /></ImageGallery>
+        <ImageGallery onImageClick={this.handleRenderModal}><ImageGalleryItem photos={photos} onCardClick={this.handlerModalContent} /></ImageGallery>
         {isLoading && <Loader />}
         {photos.length > 0 && !isLoading &&
           <Button handler={this.fetch} />}
