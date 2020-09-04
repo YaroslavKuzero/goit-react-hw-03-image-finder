@@ -11,8 +11,8 @@ class Searchbar extends Component {
     query: '',
   }
 
-  handleChange = e =>
-    this.setState({ query: e.currentTarget.value });
+  handleChange = ({ currentTarget: { value } }) =>
+    this.setState({ query: value });
 
   handleSubmit = e => {
     e.preventDefault()
@@ -27,14 +27,7 @@ class Searchbar extends Component {
             <span className="SearchForm-button-label">Search</span>
           </button>
 
-          <input
-            className="SearchForm-input"
-            type="text"
-            value={this.state.query}
-            onChange={this.handleChange}
-            autoComplete="off"
-            autoFocus
-            placeholder="Search images and photos"
+          <input className="SearchForm-input" type="text" value={this.state.query} onChange={this.handleChange} autoComplete="off" autoFocus placeholder="Search images and photos"
           />
         </form>
       </header>

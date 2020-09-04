@@ -10,6 +10,7 @@ class Modal extends Component {
     onClose: PropTypes.func.isRequired,
     largeImage: PropTypes.string.isRequired,
   }
+
   componentDidMount() {
     window.addEventListener('keydown', this.handlerEscape)
   }
@@ -18,8 +19,8 @@ class Modal extends Component {
     window.removeEventListener('keydown', this.handlerEscape)
   }
 
-  handlerEscape = e => {
-    if (e.code === 'Escape') {
+  handlerEscape = ({ code }) => {
+    if (code === 'Escape') {
       this.props.onClose();
     }
   }

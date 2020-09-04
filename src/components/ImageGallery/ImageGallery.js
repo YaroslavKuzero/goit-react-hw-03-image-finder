@@ -15,9 +15,7 @@ class ImageGallery extends Component {
   }
 
   render() {
-    return (
-      <ul className="ImageGallery" onClick={this.handlerRenderModal}>{this.props.children}</ul>
-    )
+    return <ul className="ImageGallery" onClick={this.handlerRenderModal}>{this.props.children}</ul>
   }
 }
 

@@ -10,20 +10,7 @@ class ImageGalleryItem extends Component {
 
   render() {
     const { photos } = this.props
-    return (
-      <>
-        {
-          photos.map(({ id, webformatURL, tags }) =>
-            <li key={id} className="ImageGalleryItem">
-              <img
-                onClick={() => this.props.onCardClick(id)}
-                src={webformatURL}
-                alt={tags}
-                className="ImageGalleryItem-image" />
-            </li>)
-        }
-      </>
-    )
+    return photos.map(({ id, webformatURL, tags }) => <li key={id} className="ImageGalleryItem"> <img onClick={() => this.props.onCardClick(id)} src={webformatURL} alt={tags} className="ImageGalleryItem-image" /></li>)
   }
 }
 
