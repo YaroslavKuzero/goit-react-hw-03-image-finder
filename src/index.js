@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+import FetchPhotoApp from './components/FetchPhotoApp';
+
 import './css/body.css';
 import './css/styles.css';
-import FetchPhotoApp from './components/FetchPhotoApp';
 
 
 ReactDOM.render(

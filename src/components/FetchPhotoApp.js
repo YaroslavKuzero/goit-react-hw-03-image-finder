@@ -8,7 +8,7 @@ import ImageGallery from './ImageGallery';
 import Modal from './Modal';
 import ImageGalleryItem from './ImageGalleryItem';
 
-import photoApi from './photoApi';
+import photoApi from '../services/photoApi';
 
 class FetchPhotoApp extends Component {
   state = {
@@ -54,18 +54,24 @@ class FetchPhotoApp extends Component {
     })
   }
 
-  fetch = () => {
+  fetch = async () => {
     const { keyWord, page } = this.state;
     const options = { keyWord, page };
 
     this.setState({ isLoading: true });
 
-    photoApi.fetchPhotos(options).then(res => {
+    try {
+      const res = await photoApi.fetchPhotos(options)
       this.setState(prevState => ({
         photos: [...prevState.photos, ...res],
         page: prevState.page + 1,
-      }));
-    }).catch(error => this.setState({ error: error })).finally(() => this.setState({ isLoading: false }))
+      }))
+      this.setState({ isLoading: false })
+    } catch (error) {
+      this.setState({ error: error })
+      this.setState({ isLoading: false })
+    }
+
   }
 
   handlerModalContent = id => {
@@ -77,6 +83,7 @@ class FetchPhotoApp extends Component {
   render() {
     const { photos, isLoading, error, isShowModal, modalContent } = this.state
     const isShowError = error;
+    const isShowButtonLoadMore = photos.length > 0 && !isLoading
     return (
       <div className='App'>
         {isShowModal && <Modal largeImage={modalContent} onClose={this.handleRenderModal} />}
@@ -84,7 +91,7 @@ class FetchPhotoApp extends Component {
         {isShowError && <Error />}
         <ImageGallery onImageClick={this.handleRenderModal}><ImageGalleryItem photos={photos} onCardClick={this.handlerModalContent} /></ImageGallery>
         {isLoading && <Loader />}
-        {photos.length > 0 && !isLoading &&
+        {isShowButtonLoadMore &&
           <Button loadMore={this.fetch} />}
       </div >
     )
